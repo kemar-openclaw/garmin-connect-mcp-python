@@ -14,13 +14,14 @@ class GarminMCPServer:
         if not self.client:
             email = os.getenv("GARMIN_EMAIL")
             password = os.getenv("GARMIN_PASSWORD")
+            tokenstore = os.getenv("GARMINTOKENS") or os.path.expanduser("~/.garmin-mcp/tokens")
+            
             if not email or not password:
                 raise ValueError("GARMIN_EMAIL and GARMIN_PASSWORD environment variables are required.")
             
-            # Using httpx to match mcp async if needed, but python-garminconnect is sync by default.
             # python-garminconnect uses requests internally.
             self.client = Garmin(email, password)
-            self.client.login()
+            self.client.login(tokenstore=tokenstore)
         return self.client
 
     def run(self):
