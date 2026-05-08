@@ -1,0 +1,15 @@
+[project]
+name = "garmin-connect-mcp-python"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "garminconnect>=0.3.2",
+    "httpx>=0.28.1",
+    "mcp>=1.27.1",
+    "pydantic>=2.13.4",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "python-dotenv>=1.2.2",
+]
